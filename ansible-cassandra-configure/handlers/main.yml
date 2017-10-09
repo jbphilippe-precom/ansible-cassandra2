@@ -1,0 +1,5 @@
+---
+# handlers file for ansible-cassandra-configure
+
+- name: stop cassandra
+  service: name=cassandra state=stopped

@@ -1,0 +1,8 @@
+---
+# defaults file for ansible-cassandra-securise
+
+cassandra_conf_file: /etc/cassandra/cassandra.yaml
+cassandra_interface: eth1
+cassandra_add_admin_user: True
+cassandra_system_auth_replication_factor: 2
+cassandra_thrift_client_api_port: 9160

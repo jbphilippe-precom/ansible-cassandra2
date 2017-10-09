@@ -1,0 +1,15 @@
+---
+# defaults file for ansible-cassandra-configure
+
+#Configuration variables
+cassandra_version_min: 2.1
+cassandra_cluster_name: CLuster1
+cassandra_interface: eth1
+cassandra_row_cache_size_mb: 512
+
+cassandra_add_admin_user: True
+
+#Configuration files
+cassandra_conf_file: /etc/cassandra/cassandra.yaml
+cassandra_env_file: /etc/cassandra/cassandra-env.sh
+cassandra_logrotate_file: /etc/logrotate.d/cassandra

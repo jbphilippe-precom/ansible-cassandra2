@@ -1,0 +1,4 @@
+---
+# defaults file for ansible-cassandra-topology
+
+cassandra_interface: eth1

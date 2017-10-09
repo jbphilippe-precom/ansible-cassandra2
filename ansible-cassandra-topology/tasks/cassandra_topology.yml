@@ -1,0 +1,9 @@
+---
+
+#- name: Set prod interface
+#  set_fact: cassandra_interface_prod="ansible_{{ cassandra_interface }}"
+
+- name: Update Cassandra topology file.
+  sudo: yes
+  template: src="cassandra_topology.tpl" dest="/etc/cassandra/cassandra-topology.properties"
+

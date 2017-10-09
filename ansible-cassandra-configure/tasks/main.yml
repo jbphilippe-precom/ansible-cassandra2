@@ -1,0 +1,5 @@
+---
+# tasks file for ansible-cassandra-configure
+
+- include: cassandra_configure.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'

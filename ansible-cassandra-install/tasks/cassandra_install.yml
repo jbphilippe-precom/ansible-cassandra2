@@ -1,0 +1,35 @@
+---
+
+- name: Install utils
+  apt: name=libjemalloc1 update_cache=yes state=latest
+
+- name: Create Cassandra LV
+  lvol: vg={{ cassandra_vg_name }} lv={{ cassandra_lv_name }} size={{ cassandra_lv_size }}
+
+- name: Create ext4 filesystem for Cassandra
+  filesystem: fstype=ext4 dev=/dev/{{ cassandra_vg_name }}/{{ cassandra_lv_name }}
+
+- name: Create mounpoint
+  mount: name={{ cassandra_datadir }} src=/dev/mapper/{{ cassandra_vg_name }}-{{ cassandra_lv_name }} fstype=ext4 opts=noatime state=mounted
+
+- name: Cassandra Key
+#  apt_key: url=http://mirror.services.local/pubkey/cassandra.asc state=present
+  apt_key: url=http://mirror.services.local/pubkey/ael.scs.systeme.key state=present
+
+- name: Get major version
+  shell: python -c 'line=str({{ cassandra_version_min }});line=line.translate(None, ".");line=line+("x");print line;'
+  register: cassandra_version
+  changed_when: False
+
+- name: Cassandra APT repository
+  apt_repository: repo='deb http://mirror.services.local/cassandra_{{ cassandra_version_min }}/ {{ cassandra_version.stdout }} main' state=present
+
+- name: Install latest Cassandra
+  apt: name=cassandra update_cache=yes state=latest
+
+#- name: Reset all data files
+#  file: path={{ cassandra_datadir  }}/* state=absent
+
+#- name: Reset all log files
+#  file: path=/var/log/cassandra/* state=absent
+  

@@ -1,0 +1,22 @@
+---
+#Variable files for ansible-cassandra2
+
+cassandra_lv_size: 10
+cassandra_datadir: /var/lib/cassandra
+
+cassandra_conf_file: /etc/cassandra/cassandra.yaml
+cassandra_env_file: /etc/cassandra/cassandra-env.sh
+cassandra_logrotate_file: /etc/logrotate.d/cassandra
+cassandra_row_cache_size_mb: 512
+cassandra_thrift_client_api_port: 9160
+cassandra_system_auth_replication_factor: 2
+
+
+cassandra_version_min: 2.1
+cassandra_cluster_name: Cluster1
+cassandra_interface: eth1
+cassandra_add_admin_user: True
+
+
+
+

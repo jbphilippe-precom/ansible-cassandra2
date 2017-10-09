@@ -1,0 +1,5 @@
+---
+# tasks file for ansible-cassandra-securise
+
+- include: cassandra_securise.yml
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'

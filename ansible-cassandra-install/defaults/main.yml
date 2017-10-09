@@ -1,0 +1,7 @@
+---
+# defaults file for ansible-cassandra
+
+cassandra_lv_size: 10g
+cassandra_datadir: /var/lib/cassandra
+
+cassandra_version_min: 2.1
